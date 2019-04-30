@@ -6,11 +6,13 @@ clear all;
 close all;
 clc;
 
-I1 = imread('cara4.jpg','jpg'); #Carga imagen
+I1 = imread('Imagenes/cara1.jpg','jpg'); #Carga imagen
 figure(1); #muestra
 imshow(uint8(I1)); #parsea a numeros 0 -255
 I2 = I1;   #obs
 Iz = I1(:,:,2);  #contraste
+%En caso la conversio no se pueda realizar cambiar el 2 por 1
+
 [nf nc] = size(Iz);
 %figure(2);
 %imshow(uint8(Iz)); 
@@ -46,11 +48,14 @@ end
 %========================================================
 
 %nfc = 1800;  1750
-k = 4
-% nf representa toda la cara, y nf/k representa una porcion a cortar
-% nfc refresenta la cara cortada.
+% Cambiar este valor para cada foto
+k = 4.8
+%Cuando k es mas pequeño se corta más - k generalmente(entre 1 y 3)
 nfc = nf - nf/k;        % Recorte del cuello
 Iz1 = Iz(f:nfc, :);
+% nf representa toda la cara, y nf/k representa una porcion a cortar
+% nfc refresenta la cara cortada.
+
 
 %========================================================
 %                Foto               Foto recoratada
@@ -164,5 +169,4 @@ I_final = I42bn(1:tfinal_f, 1:tfinal_c);
 
 % Guardar las imagenes pixeleadas
 size(I_final)
-save cara1px I_final;
-
+save -ascii cara1px I_final;
