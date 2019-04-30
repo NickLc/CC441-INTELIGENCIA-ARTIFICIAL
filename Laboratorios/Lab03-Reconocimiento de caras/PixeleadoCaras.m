@@ -6,7 +6,7 @@ clear all;
 close all;
 clc;
 
-I1 = imread('Imagenes/cara1.jpg','jpg'); #Carga imagen
+I1 = imread('Imagenes/cara8Modificada.jpg','jpg'); #Carga imagen
 figure(1); #muestra
 imshow(uint8(I1)); #parsea a numeros 0 -255
 I2 = I1;   #obs
@@ -49,7 +49,7 @@ end
 
 %nfc = 1800;  1750
 % Cambiar este valor para cada foto
-k = 4.8
+k = 2.8
 %Cuando k es mas pequeño se corta más - k generalmente(entre 1 y 3)
 nfc = nf - nf/k;        % Recorte del cuello
 Iz1 = Iz(f:nfc, :);
@@ -169,4 +169,5 @@ I_final = I42bn(1:tfinal_f, 1:tfinal_c);
 
 % Guardar las imagenes pixeleadas
 size(I_final)
-save -ascii cara1px I_final;
+%Poner el nombre del archivo de salida
+save -ascii cara8Modificadapx I_final;

@@ -2,9 +2,10 @@
 clear;
 clc;
 close all;
-
-load cara8px;
-cara = abs((cara8px-255)/255);
+% Nombre del archivo
+load cara8Modificadapx; 
+% Cambiar por el nombre del archivo
+cara = abs((cara8Modificadapx-255)/255);
 [nf nc] = size(cara);
 x(1,:) = cara(1,:);
 for k = 2:nf
@@ -13,9 +14,9 @@ end
 [ nxf nxc ] = size(x);
 nx = nxf;
 
-% ne = nxc;
-% ns = 4;
+% Cargamos los pesos del entrenamiento
 load pesoscaras;    % Carga nm v w bias
+
 if(bias == 1)
    ne = ne +1;
    x = [ x ones(nx,1) ];   
